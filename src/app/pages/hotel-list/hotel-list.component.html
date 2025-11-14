@@ -20,30 +20,30 @@
     <div class="overflow-y-scroll h-full no-scrollbar p-10">
       <!-- CARD -->
       <div class="flex flex-col gap-6">
-        @for (hotel of hotelList; track $index) {
+        @for (hotel of hotelList(); track hotel.id) {
         <div class="flex shadow-sm hover:shadow-md">
           <img
             class="w-1/3 h-48 overflow-hidden"
-            [src]="hotel.image"
-            [alt]="hotel.title"
+            [src]=""
+            [alt]="hotel.name"
           />
           <div class="flex justify-between w-full p-6">
             <div>
-              <h3 class="text-lg font-bold text-blue-600">{{ hotel.title }}</h3>
+              <h3 class="text-lg font-bold text-blue-600">{{ hotel.name }}</h3>
               <p class="text-sm text-gray-500">
-                {{ hotel.address }}, {{ hotel.country }}
+                {{ hotel.city }}, {{ hotel.country }}
               </p>
             </div>
             <div class="flex flex-col justify-between">
               <div class="flex flex-col items-end">
                 <span
                   class="bg-blue-600 text-white font-bold text-sm px-2 py-1 rounded"
-                  >{{ hotel.rating }}</span
+                  >55</span
                 >
                 <p class="text-xs mt-1 text-gray-500">Excellent</p>
               </div>
               <div class="flex flex-col items-end">
-                <p class="text-xl font-bold">${{ hotel.price }}</p>
+                <p class="text-xl font-bold">$55</p>
                 <p class="text-xs mt-1 text-gray-500">per night</p>
                 <button
                   class="mt-2 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-md hover:bg-blue-700"

@@ -37,6 +37,7 @@
               class="border-none focus:border-none outline-none pr-14 py-2"
               type="text"
               placeholder="e.g. New York"
+              [(ngModel)]="destination"
             />
           </div>
         </div>
@@ -47,6 +48,7 @@
           <input
             type="date"
             class="border border-gray-400 px-4 py-2 rounded-sm bg-white"
+            [(ngModel)]="checkin"
           />
         </div>
         <div class="flex flex-col gap-2">
@@ -56,6 +58,7 @@
           <input
             type="date"
             class="border border-gray-400 px-4 py-2 rounded-sm bg-white"
+            [(ngModel)]="checkout"
           />
         </div>
         <div class="flex flex-col gap-2">
@@ -73,6 +76,7 @@
       <div class="w-full p-2.5 mt-4">
         <button
           class="primary-bg w-full cursor-pointer rounded-sm text-white font-bold py-3 flex items-center justify-center gap-4"
+          (click)="onApplyFilter()"
         >
           <p class="w-4 h-4">
             <svg
