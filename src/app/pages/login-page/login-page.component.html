@@ -13,8 +13,11 @@
           formControlName="email"
         />
         @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
-          @if () {
-            
+          @if (loginForm.get('email')?.errors?.['required']) {
+            <p class="text-red-600 text-xs">Email is required</p>
+          }
+          @if(loginForm.get('email')?.errors?.['email']){
+            <p class="text-red-600 text-xs">Invalid Email</p>
           }
         }
       </div>
