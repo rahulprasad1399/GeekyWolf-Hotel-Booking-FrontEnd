@@ -1,0 +1,32 @@
+<div class="flex justify-between px-10">
+  <h1 class="text-2xl font-semibold">Payment Listing</h1>
+</div>
+<div class="p-10 h-screen overflow-x-scroll hide-scrollbar">
+  <table class="min-w-full border border-gray-300 rounded-lg overflow-hidden">
+    <thead class="bg-gray-100">
+      <tr class="text-left">
+        <th class="p-3 border-b">Id</th>
+        <th class="p-3 border-b">Payment Date</th>
+        <th class="p-3 border-b">Amount</th>
+        <th class="p-3 border-b">Method</th>
+        <th class="p-3 border-b">Status</th>
+        <th class="p-3 border-b">Booking Id</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (payment of payments(); track payment.id) {
+      <tr class="hover:bg-gray-50">
+        <td class="p-3 border-b">{{ payment.id }}</td>
+        <td class="p-3 border-b">
+          {{ payment.paymentDate | date : "longDate" }}
+        </td>
+        <td class="p-3 border-b">{{ payment.amount }}</td>
+        <td class="p-3 border-b">{{ paymentMethod[payment.method] }}</td>
+        <td class="p-3 border-b">{{ paymentStatus[payment.status] }}</td>
+        <td class="p-3 border-b">{{ payment.bookingId }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

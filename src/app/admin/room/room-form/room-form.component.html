@@ -1,0 +1,96 @@
+<form
+  class="ml-6 max-w-lg space-y-6"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ action() }} Room</h1>
+
+  <div class="flex flex-col space-y-1">
+    <label for="roomNumber" class="font-medium text-gray-700"
+      >Room Number</label
+    >
+    <input
+      type="text"
+      id="roomNumber"
+      formControlName="roomNumber"
+      class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    @if (IsRoomNumberValid) {
+    <p class="text-sm text-red-600">Room Number is required</p>
+    }
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <label for="pricePerNight" class="font-medium text-gray-700"
+      >Price Per Night</label
+    >
+    <input
+      type="text"
+      id="pricePerNight"
+      formControlName="pricePerNight"
+      class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    @if (IsPricePerNightValid) {
+    <p class="text-sm text-red-600">Price is required</p>
+    }
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <label for="roomStatus" class="font-medium text-gray-700">Status</label>
+    <select
+      name="roomStatus"
+      id="roomStatus"
+      formControlName="roomStatus"
+      class="p-2 border"
+    >
+      <option value="0" class="p-2">Available</option>
+      <option value="1" class="p-2">Booked</option>
+      <option value="2" class="p-2">UnderMaintenance</option>
+    </select>
+    @if (IsRoomStatusValid) {
+    <p class="text-sm text-red-600">Status is required</p>
+    }
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <label for="hotelId" class="font-medium text-gray-700">Hotel</label>
+    <select
+      name="hotelId"
+      id="hotelId"
+      formControlName="hotelId"
+      class="p-2 border"
+    >
+      @for (hotel of hotels(); track hotel.id) {
+      <option class="p-2" [value]="hotel.id">{{ hotel.name }}</option>
+      }
+    </select>
+
+    @if (IsHotelIdValid) {
+    <p class="text-sm text-red-600">Hotel is required</p>
+    }
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <label for="roomTypeId" class="font-medium text-gray-700">Room Type</label>
+    <select
+      name="roomTypeId"
+      id="roomTypeId"
+      class="p-2 border"
+      formControlName="roomTypeId"
+    >
+      @for (roomType of roomType(); track roomType.id) {
+      <option class="p-2" [value]="roomType.id">{{ roomType.typeName }}</option>
+      }
+    </select>
+    @if (IsRoomTypeIdValid) {
+    <p class="text-sm text-red-600">Room Type is Required</p>
+    }
+  </div>
+
+  <button
+    type="submit"
+    class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all duration-300 cursor-pointer"
+  >
+    {{ action() }} Room
+  </button>
+</form>

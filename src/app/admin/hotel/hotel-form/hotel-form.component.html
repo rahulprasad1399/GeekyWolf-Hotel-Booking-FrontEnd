@@ -1,0 +1,78 @@
+<form
+  class="ml-6 max-w-lg space-y-6"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ action() }} Hotel</h1>
+
+  <div class="flex flex-col space-y-1">
+    <label for="name" class="font-medium text-gray-700">Name</label>
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    @if (IsNameValid) {
+    <p class="text-sm text-red-600">Name is required</p>
+    }
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <label for="address" class="font-medium text-gray-700">Address</label>
+    <input
+      type="text"
+      id="address"
+      formControlName="address"
+      class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <label for="city" class="font-medium text-gray-700">City</label>
+    <input
+      type="text"
+      id="city"
+      formControlName="city"
+      class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    @if (IsCityValid) {
+    <p class="text-sm text-red-600">City is required</p>
+    }
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <label for="country" class="font-medium text-gray-700">Country</label>
+    <input
+      type="text"
+      id="country"
+      formControlName="country"
+      class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    @if (IsCountryValid) {
+    <p class="text-sm text-red-600">Country is required</p>
+    }
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <label for="phoneNumber" class="font-medium text-gray-700"
+      >Phone Number</label
+    >
+    <input
+      type="text"
+      id="phoneNumber"
+      formControlName="phoneNumber"
+      class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    @if (IsPhoneNumberValid) {
+    <p class="text-sm text-red-600">Enter a valid phone Number</p>
+    }
+  </div>
+
+  <button
+    type="submit"
+    class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all duration-300 cursor-pointer"
+  >
+    {{ action() }} Hotel
+  </button>
+</form>

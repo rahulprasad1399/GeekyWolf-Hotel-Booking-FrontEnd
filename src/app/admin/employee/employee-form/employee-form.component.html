@@ -1,0 +1,62 @@
+<form
+  class="ml-6 max-w-lg space-y-6"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ action() }} Employee</h1>
+
+  <div class="flex flex-col space-y-1">
+    <label for="fullName" class="font-medium text-gray-700">Full Name</label>
+    <input
+      type="text"
+      id="fullName"
+      formControlName="fullName"
+      class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    @if (IsNameValid) {
+    <p class="text-sm text-red-600">Name is required</p>
+    }
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <label for="role" class="font-medium text-gray-700">Role</label>
+    <input
+      type="text"
+      id="role"
+      formControlName="role"
+      class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <label for="email" class="font-medium text-gray-700">Email</label>
+    <input
+      type="text"
+      id="email"
+      formControlName="email"
+      class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    @if (IsEmailValid) {
+    <p class="text-sm text-red-600">Enter a valid Email</p>
+    }
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <label for="hotelId" class="font-medium text-gray-700">Hotel</label>
+    <select name="hotelId" id="hotelId" formControlName="hotelId" class="p-2 border border-gray-300 rounded">
+      @for (hotel of hotels(); track hotel.id) {
+      <option [value]="hotel.id">{{ hotel.name }}</option>
+      }
+    </select>
+    @if (IsHotelIdValid) {
+    <p class="text-sm text-red-600">Hotel is Required</p>
+    }
+  </div>
+
+  <button
+    type="submit"
+    class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all duration-300 cursor-pointer"
+  >
+    {{ action() }} Hotel
+  </button>
+</form>

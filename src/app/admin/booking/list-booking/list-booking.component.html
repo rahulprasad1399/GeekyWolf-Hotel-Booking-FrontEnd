@@ -1,0 +1,33 @@
+<div class="flex justify-between px-10">
+  <h1 class="text-2xl font-semibold">Booking Listing</h1>
+</div>
+<div class="p-10 h-screen overflow-x-scroll hide-scrollbar">
+  <table class="min-w-full border border-gray-300 rounded-lg overflow-hidden">
+    <thead class="bg-gray-100">
+      <tr class="text-left">
+        <th class="p-3 border-b">Id</th>
+        <th class="p-3 border-b">CheckInDate</th>
+        <th class="p-3 border-b">CheckOutDate</th>
+        <th class="p-3 border-b">Total Amount</th>
+        <th class="p-3 border-b">Status</th>
+        <th class="p-3 border-b">Customer Name</th>
+        <th class="p-3 border-b">Room Number</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (booking of bookings(); track booking.id) {
+      <tr class="hover:bg-gray-50">
+        <td class="p-3 border-b">{{ booking.id }}</td>
+        <td class="p-3 border-b">{{ booking.checkInDate | date : 'longDate' }}</td>
+        <td class="p-3 border-b">{{ booking.checkOutDate | date : 'longDate'  }}</td>
+        <td class="p-3 border-b">{{ booking.totalAmount }}</td>
+        <td class="p-3 border-b">{{ bookingStatus[booking.status] }}</td>
+        <td class="p-3 border-b">{{ booking.customerName }}</td>
+        <td class="p-3 border-b">{{ booking.roomNumber }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+

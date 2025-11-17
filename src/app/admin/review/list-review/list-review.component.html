@@ -1,0 +1,30 @@
+<div class="flex justify-between px-10">
+  <h1 class="text-2xl font-semibold">Review Listing</h1>
+</div>
+<div class="p-10 h-screen overflow-x-scroll hide-scrollbar">
+  <table class="min-w-full border border-gray-300 rounded-lg overflow-hidden">
+    <thead class="bg-gray-100">
+      <tr class="text-left">
+        <th class="p-3 border-b">Id</th>
+        <th class="p-3 border-b">Rating</th>
+        <th class="p-3 border-b">Comment</th>
+        <th class="p-3 border-b">Review Date</th>
+        <th class="p-3 border-b">Hotel Name</th>
+        <th class="p-3 border-b">Customer Name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (review of reviews(); track review.id) {
+      <tr class="hover:bg-gray-50">
+        <td class="p-3 border-b">{{ review.id }}</td>
+        <td class="p-3 border-b">{{ review.rating }}</td>
+        <td class="p-3 border-b">{{ review.comment }}</td>
+        <td class="p-3 border-b">{{ review.reviewDate | date : 'longDate' }}</td>
+        <td class="p-3 border-b">{{ review.hotelName }}</td>
+        <td class="p-3 border-b">{{ review.customerName }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

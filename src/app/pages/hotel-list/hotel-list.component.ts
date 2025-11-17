@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { FilterComponent } from "./filter/filter.component";
 import { HotelService } from '../../services/hotel.service';
-import { Hotel } from '../../model/hotel.model';
+import { Hotel } from '../../model/model.component';
 
 @Component({
   selector: 'app-hotel-list',
