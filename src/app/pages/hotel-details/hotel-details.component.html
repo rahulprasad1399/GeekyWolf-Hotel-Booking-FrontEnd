@@ -1,1 +1,25 @@
-
+<div class="hotel-section h-screen">
+  <div class="hotel-container">
+    @for (room of rooms(); track room.id) {
+    <div class="hotel">
+      <img [src]="room.image" alt="" class="hotel-image" />
+      <div class="text-container">
+        <div class="flex justify-between">
+          <p class="hotel-name">{{ room.roomNumber }}</p>
+          <span class="rounded-full text-gray-500 font-semibold text-xs">{{
+            roomStatus[room.roomStatus]
+          }}</span>
+        </div>
+        <div class="hotel-phone">
+          <p class="hotel-phoneicon">💰</p>
+          <p class="hotel-phonenumber">{{ room.pricePerNight }}</p>
+        </div>
+        <p class="hotel-city">{{ room.roomTypeName }}</p>
+        <div class="button-contaner">
+          <button class="hotel-viewdetails">View Details</button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

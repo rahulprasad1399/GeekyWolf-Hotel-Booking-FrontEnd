@@ -5,6 +5,9 @@ export interface Hotel {
   city: string;
   country: string;
   phoneNumber: string;
+  image : string,
+  pricePerNight : number,
+  customerRating : number
 }
 
 export interface RoomType {
@@ -23,6 +26,7 @@ export interface Room {
   roomTypeId: number;
   hoteName: string;
   roomTypeName: string;
+  image : string;
 }
 
 export enum RoomStatus {

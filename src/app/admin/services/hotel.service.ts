@@ -17,11 +17,11 @@ export class HotelService {
   }
 
   CreateHotel(hotel: any) {
-    return this.http.post('https://localhost:7006/Hotel', hotel);
+    return this.http.post('https://localhost:7006/Hotel', hotel,{withCredentials : true});
   }
 
   UpdateHotel(id: string, hotel: any) {
-    return this.http.put(`https://localhost:7006/Hotel/${id}`, hotel);
+    return this.http.put(`https://localhost:7006/Hotel/${id}`, hotel,{withCredentials : true});
   }
 
   DeleteHotel(id : number) {

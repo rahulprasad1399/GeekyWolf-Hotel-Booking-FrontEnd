@@ -17,14 +17,14 @@ export class EmployeeService {
   }
 
   CreateEmployee(employee: any) {
-    return this.http.post('https://localhost:7006/api/Employee', employee);
+    return this.http.post('https://localhost:7006/api/Employee', employee,{withCredentials : true});
   }
 
   UpdateEmployee(id: string, employee: any) {
-    return this.http.put(`https://localhost:7006/api/Employee/${id}`, employee);
+    return this.http.put(`https://localhost:7006/api/Employee/${id}`, employee,{withCredentials : true});
   }
 
   DeleteEmployee(id: number) {
-    return this.http.delete(`https://localhost:7006/api/Employee/${id}`);
+    return this.http.delete(`https://localhost:7006/api/Employee/${id}`,{withCredentials : true});
   }
 }

@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { HotelListComponent } from './pages/hotel-list/hotel-list.component';
 import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LoginPageComponent } from './admin/login-page/login-page.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { HotelComponent } from './admin/hotel/hotel.component';
 import { RoomComponent } from './admin/room/room.component';
@@ -28,6 +28,7 @@ import { ListReviewComponent } from './admin/review/list-review/list-review.comp
 import { ListEmployeeComponent } from './admin/employee/list-employee/list-employee.component';
 import { AddEmployeeComponent } from './admin/employee/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './admin/employee/edit-employee/edit-employee.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,6 +38,7 @@ export const routes: Routes = [
   {
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
+    canActivate : [authGuard],
     children: [
       { path: '', redirectTo: 'hotels', pathMatch: 'full' },
       {

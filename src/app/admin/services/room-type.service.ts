@@ -17,14 +17,14 @@ export class RoomTypeService {
   }
 
   CreateRoomType(RoomType: any) {
-    return this.http.post('https://localhost:7006/RoomType', RoomType);
+    return this.http.post('https://localhost:7006/RoomType', RoomType,{withCredentials : true});
   }
 
   UpdateRoomType(id: string, roomType: any) {
-    return this.http.put(`https://localhost:7006/RoomType/${id}`, roomType);
+    return this.http.put(`https://localhost:7006/RoomType/${id}`, roomType,{withCredentials : true});
   }
 
   DeleteRoomType(id: number) {
-    return this.http.delete(`https://localhost:7006/RoomType/${id}`);
+    return this.http.delete(`https://localhost:7006/RoomType/${id}`,{withCredentials : true});
   }
 }

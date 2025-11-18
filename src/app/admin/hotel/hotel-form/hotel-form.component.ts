@@ -45,6 +45,7 @@ export class HotelFormComponent implements OnInit {
             city: res.city,
             country: res.country,
             phoneNumber: res.phoneNumber,
+            image: res.image,
           });
         },
         error: (err) => console.log(err),
@@ -66,6 +67,7 @@ export class HotelFormComponent implements OnInit {
     phoneNumber: new FormControl('', {
       validators: [Validators.required, Validators.pattern(/^\d{10}$/)],
     }),
+    image: new FormControl(''),
   });
 
   get IsNameValid() {
@@ -101,6 +103,15 @@ export class HotelFormComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('Form Valid:', this.form.valid);
+    console.log('Errors:', this.form.errors);
+    console.log('Controls:', {
+      name: this.form.controls.name.errors,
+      city: this.form.controls.city.errors,
+      country: this.form.controls.country.errors,
+      phoneNumber: this.form.controls.phoneNumber.errors,
+    });
+
     if (!this.form.valid) {
       return;
     }
@@ -133,7 +144,7 @@ export class HotelFormComponent implements OnInit {
             this.toastr.success('Hotel Successfully Updated');
             setTimeout(() => {
               this.router.navigate(['admin-dashboard', 'hotels']);
-            }, 500); 
+            }, 500);
           },
           error: (err) => {
             this.toastr.error('Failed to Update Hotel');

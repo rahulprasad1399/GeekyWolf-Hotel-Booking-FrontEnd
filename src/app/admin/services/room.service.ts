@@ -9,7 +9,7 @@ export class RoomService {
   http = inject(HttpClient);
 
   GetAllRooms() {
-    return this.http.get<Room[]>('https://localhost:7006/api/Room');
+    return this.http.get<Room[]>('https://localhost:7006/api/Room',{withCredentials : true});
   }
 
   GetRoomById(id: string) {
@@ -17,14 +17,14 @@ export class RoomService {
   }
 
   CreateRoom(room: any) {
-    return this.http.post('https://localhost:7006/api/Room', room);
+    return this.http.post('https://localhost:7006/api/Room', room, {withCredentials : true});
   }
 
   UpdateRoom(id: string, room: any) {
-    return this.http.put(`https://localhost:7006/api/Room/${id}`, room);
+    return this.http.put(`https://localhost:7006/api/Room/${id}`, room,{withCredentials : true});
   }
 
   DeleteRoom(id: number) {
-    return this.http.delete(`https://localhost:7006/api/Room/${id}`);
+    return this.http.delete(`https://localhost:7006/api/Room/${id}`,{withCredentials : true});
   }
 }

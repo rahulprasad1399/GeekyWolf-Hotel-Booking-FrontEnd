@@ -48,6 +48,7 @@ export class RoomFormComponent {
             roomStatus: Number(res.roomStatus),
             hotelId: Number(res.hotelId),
             roomTypeId: Number(res.roomTypeId),
+            image : res.image
           });
         },
         error: (err) => console.log(err),
@@ -93,6 +94,7 @@ export class RoomFormComponent {
     roomTypeId: new FormControl(0, {
       validators: [Validators.required],
     }),
+    image : new FormControl('')
   });
 
   get IsRoomNumberValid() {
@@ -154,6 +156,7 @@ export class RoomFormComponent {
           status: enteredRoomStatus,
           hotelId: enteredHotelId,
           roomTypeId: enteredRoomTypeId,
+          image : this.form.value.image
         })
         .subscribe({
           next: (res) => {
@@ -180,6 +183,7 @@ export class RoomFormComponent {
           status: enteredRoomStatus,
           hotelId: enteredHotelId,
           roomTypeId: enteredRoomTypeId,
+          image : this.form.value.image
         })
         .subscribe({
           next: (res) => {

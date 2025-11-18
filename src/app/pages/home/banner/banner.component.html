@@ -73,6 +73,9 @@
           </select>
         </div>
       </div>
+      @if (dateValidation()) {
+        <p class="text-sm text-rose-600 text-start p-2">{{message()}}</p>
+      }
       <div class="w-full p-2.5 mt-4">
         <button
           class="primary-bg w-full cursor-pointer rounded-sm text-white font-bold py-3 flex items-center justify-center gap-4"
@@ -96,7 +99,7 @@
               ></path>
             </svg>
           </p>
-          <p routerLink="hotel-list">Search Hotels</p>
+          <p>Search Hotels</p>
         </button>
       </div>
     </div>

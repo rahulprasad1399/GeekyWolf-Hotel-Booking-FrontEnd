@@ -119,7 +119,7 @@ export class EmployeeFormComponent {
           next: (res) => {
             this.toastr.success('Employee Successfully Added');
             setTimeout(() => {
-              this.router.navigate(['admin-dashboard', 'employee']);
+              this.router.navigate(['admin-dashboard', 'employees']);
             }, 500);
           },
           error: (err) => {
@@ -144,7 +144,7 @@ export class EmployeeFormComponent {
           next: (res) => {
             this.toastr.success('Employee Successfully Updated');
             setTimeout(() => {
-              this.router.navigate(['admin-dashboard', 'employee']);
+              this.router.navigate(['admin-dashboard', 'employees']);
             }, 500);
           },
           error: (err) => {
