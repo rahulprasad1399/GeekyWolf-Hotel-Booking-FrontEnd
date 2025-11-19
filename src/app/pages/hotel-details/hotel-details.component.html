@@ -69,12 +69,15 @@
             />
             <mat-datepicker-toggle
               matSuffix
-              [for]="checkInPicker"
+              [for]="checkOutPicker"
             ></mat-datepicker-toggle>
             <mat-datepicker #checkOutPicker></mat-datepicker>
           </mat-form-field>
         </div>
       </form>
+      @if (message()) {
+      <p class="text-xs text-red-600">{{ message() }}</p>
+      }
 
       <div class="flex gap-4">
         <button

@@ -34,6 +34,8 @@ export class HotelDetailsComponent implements OnInit {
   bookingService = inject(BookingService);
   router = inject(Router);
 
+  message = signal<string>('');
+
   bookingRanges = signal<{ checkin: Date; checkout: Date }[]>([]);
 
   constructor(private toastr: ToastrService) {}
@@ -87,6 +89,23 @@ export class HotelDetailsComponent implements OnInit {
 
     const enteredCheckIn = this.form.value.checkInDate!;
     const enteredCheckOut = this.form.value.checkOutDate!;
+
+    if (enteredCheckIn > enteredCheckOut) {
+      this.message.set('check out date should be greater than check in date');
+      return;
+    }
+
+    const overlapBooking = this.bookingRanges().filter(
+      (booking) =>
+        new Date(enteredCheckIn) < new Date(booking.checkout) &&
+        new Date(enteredCheckOut) < new Date(booking.checkin)
+    );
+
+    if (overlapBooking) {
+      this.message.set('Enter a valid date');
+      return;
+    }
+
     const room = this.selectedRoom()!;
 
     const totalAmount = room.pricePerNight;
@@ -105,17 +124,20 @@ export class HotelDetailsComponent implements OnInit {
       next: (res) => {
         this.toastr.success('Booking Successfull');
         this.isBookNow.set(false);
+        this.message.set('');
       },
       error: (err) => {
         this.toastr.error('Booking Failed Please Login');
         this.router.navigate(['customer-register']);
         this.isBookNow.set(false);
+        this.message.set('');
       },
     });
   }
 
   checkInFilter = (date: Date | null): boolean => {
     if (!date) return true;
+    if (date < new Date()) return false;
     return !this.bookingRanges().some(
       (range) => date >= range.checkin && date <= range.checkout
     );
@@ -123,6 +145,7 @@ export class HotelDetailsComponent implements OnInit {
 
   checkOutFilter = (date: Date | null): boolean => {
     if (!date) return true;
+    if (date < new Date()) return false;
     return !this.bookingRanges().some(
       (range) => date >= range.checkin && date <= range.checkout
     );
