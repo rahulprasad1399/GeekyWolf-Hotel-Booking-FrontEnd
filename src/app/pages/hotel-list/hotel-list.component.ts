@@ -21,6 +21,7 @@ export class HotelListComponent implements OnInit {
   checkin = signal('');
   checkout = signal('');
   price = signal(0);
+  sortBy = signal('');
 
   ngOnInit() {
     this.activatedRoute.queryParams
@@ -47,12 +48,27 @@ export class HotelListComponent implements OnInit {
       });
   }
 
-  getFeedback(rating : number) : string {
+  getFeedback(rating: number): string {
     if (rating >= 9) return 'Excellent';
     if (rating >= 7) return 'Very Good';
     if (rating >= 5) return 'Good';
-    if (rating >= 3) return 'Poor';
-    return 'Very Poor';
-  
+    if (rating >= 3) return 'Poor';   
+    return 'Very Poor';    
+  }
+
+  onSortChange(event: Event) {
+    const value = (event.target as HTMLSelectElement).value;
+    this.sortBy.set(value);
+    this.sortHotels();
+  }
+
+  sortHotels() {
+    const sorted = [...this.hotelList()];
+    if (this.sortBy() === 'price') {
+      sorted.sort((a, b) => a.pricePerNight - b.pricePerNight);
+    } else if (this.sortBy() === 'rating') {
+      sorted.sort((a, b) => b.customerRating - a.customerRating);
+    }
+    this.hotelList.set(sorted);
   }
 }

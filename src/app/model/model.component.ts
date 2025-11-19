@@ -43,16 +43,28 @@ export interface Customer {
   idProofNumber: string;
 }
 
+export interface CreateCustomer{
+  fullName : string | null,
+  email : string | null,
+  phoneNumber : string | null,
+  idProofNumber : string | null,
+  password : string | null
+}
+
+export interface LoginCustomer{
+  email : string,
+  password : string 
+}
+
 export interface Booking {
-  id: number;
+  id?: number;
   checkInDate: string;
   checkOutDate: string;
   totalAmount: number;
   status: number;
-  customerId: number;
-  customerName: string;
+  customerName?: string;
   roomId: number;
-  roomNumber: string;
+  roomNumber?: string;
 }
 
 export enum BookingStatus {

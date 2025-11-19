@@ -29,16 +29,28 @@ import { ListEmployeeComponent } from './admin/employee/list-employee/list-emplo
 import { AddEmployeeComponent } from './admin/employee/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './admin/employee/edit-employee/edit-employee.component';
 import { authGuard } from './auth.guard';
+import { RoomDetailsComponent } from './pages/room-details/room-details.component';
+import { CustomerRegisterComponent } from './pages/customer-register/customer-register.component';
+import { CustomerLoginComponent } from './pages/customer-login/customer-login.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hotel-list', component: HotelListComponent },
-  { path: 'hotel-details/:id', component: HotelDetailsComponent },
+  { path : 'customer-register', component : CustomerRegisterComponent},
+  { path : 'customer-login', component : CustomerLoginComponent},
+  {
+    path: 'hotel-details/:id',
+    component: HotelDetailsComponent,
+  },
+  {
+    path: 'rooms/:roomId',
+    component: RoomDetailsComponent,
+  },
   { path: 'admin-login', component: LoginPageComponent },
   {
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
-    canActivate : [authGuard],
+    canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'hotels', pathMatch: 'full' },
       {
@@ -92,7 +104,10 @@ export const routes: Routes = [
         children: [
           { path: '', component: ListEmployeeComponent },
           { path: 'employee-add', component: AddEmployeeComponent },
-          { path: 'employee-edit/:employeeId', component: EditEmployeeComponent },
+          {
+            path: 'employee-edit/:employeeId',
+            component: EditEmployeeComponent,
+          },
         ],
       },
       {

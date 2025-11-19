@@ -1,0 +1,104 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+  <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-lg">
+    <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">
+      Customer Registration
+    </h2>
+
+    <form class="space-y-4" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div>
+        <label class="block text-gray-700 mb-1 text-sm">Full Name</label>
+        <input
+          type="text"
+          class="w-full border rounded-lg p-2 focus:ring focus:ring-indigo-300 text-sm"
+          placeholder="Enter full name"
+          formControlName="fullName"
+        />
+        @if (IsFullNameValid) {
+        <p class="text-xs text-red-600">Enter a valid Name</p>
+        }
+      </div>
+
+      <div>
+        <label class="block text-gray-700 mb-1 text-sm">Email</label>
+        <input
+          type="email"
+          class="w-full border rounded-lg p-2 focus:ring focus:ring-indigo-300 text-sm"
+          placeholder="Enter email"
+          formControlName="email"
+        />
+        @if (IsEmailValid) {
+        <p class="text-xs text-red-600">Enter a valid Email</p>
+        }
+      </div>
+
+      <div>
+        <label class="block text-gray-700 mb-1 text-sm">Phone Number</label>
+        <input
+          type="text"
+          class="w-full border rounded-lg p-2 focus:ring focus:ring-indigo-300 text-sm"
+          placeholder="Enter phone number"
+          formControlName="phoneNumber"
+        />
+        @if (IPhoneValid) {
+        <p class="text-xs text-red-600">Enter a valid phone number</p>
+        }
+      </div>
+
+      <div>
+        <label class="block text-gray-700 mb-1 text-sm">ID Proof Number</label>
+        <input
+          type="text"
+          class="w-full border rounded-lg p-2 focus:ring focus:ring-indigo-300 text-sm"
+          placeholder="Enter ID proof number"
+          formControlName="idProofNumber"
+        />
+      </div>
+
+      <div>
+        <label class="block text-gray-700 mb-1 text-sm">Password</label>
+        <input
+          type="password"
+          class="w-full border rounded-lg p-2 focus:ring focus:ring-indigo-300 text-sm"
+          placeholder="Enter password"
+          formControlName="password"
+        />
+        @if (IsPasswordValid) {
+        <p class="text-xs text-red-600">Please enter a password</p>
+        }
+      </div>
+
+      <div>
+        <label class="block text-gray-700 mb-1 text-sm">Confirm Password</label>
+        <input
+          type="password"
+          class="w-full border rounded-lg p-2 focus:ring focus:ring-indigo-300 text-sm"
+          placeholder="Confirm password"
+          formControlName="confirmPassword"
+        />
+        @if (IsCondirmPasswordValid) {
+        <p class="text-xs text-red-600">Please enter this Field</p>
+        }
+        @if (!IsPasswordMatch) {
+        <p class="text-xs text-red-600">Please enter same password</p>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700"
+      >
+        Register
+      </button>
+    </form>
+
+    <p class="text-center mt-4 text-gray-700">
+      Already registered?
+      <a
+        routerLink="/customer-login"
+        class="text-indigo-600 font-semibold hover:underline"
+      >
+        Login here
+      </a>
+    </p>
+  </div>
+</div>

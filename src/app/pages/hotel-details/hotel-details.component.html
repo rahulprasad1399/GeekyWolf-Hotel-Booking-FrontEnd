@@ -15,11 +15,83 @@
           <p class="hotel-phonenumber">{{ room.pricePerNight }}</p>
         </div>
         <p class="hotel-city">{{ room.roomTypeName }}</p>
-        <div class="button-contaner">
-          <button class="hotel-viewdetails">View Details</button>
+        <div class="flex justify-between mt-6">
+          <a
+            class="border rounded-full px-4 py-2 text-sm border-gray-600 text-gray-600 hover:cursor-pointer hover:bg-gray-600 hover:text-white transition-all duration-500 hover:shadow-xl"
+            [routerLink]="['/rooms', room.id]"
+          >
+            View Details
+          </a>
+          <button
+            class="border rounded-full px-4 py-2 text-sm border-blue-600 text-blue-600 hover:cursor-pointer hover:bg-blue-600 hover:text-white transition-all duration-500 hover:shadow-xl"
+            (click)="onBookNow(room)"
+          >
+            Book Now
+          </button>
         </div>
       </div>
     </div>
     }
   </div>
 </div>
+
+@if (isBookNow()) {
+<div class="fixed inset-0 bg-black/70">
+  <div class="flex justify-center items-center h-screen">
+    <div
+      class="min-w-md bg-white flex flex-col justify-center items-center p-16 rounded-2xl gap-4"
+    >
+      <form action="" [formGroup]="form" (submit)="onSubmit()">
+        <div class="flex flex-col gap-2">
+          <label for="checkInDate" class="font-bold">Check in</label>
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              [matDatepicker]="checkInPicker"
+              formControlName="checkInDate"
+              [matDatepickerFilter]="checkInFilter"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="checkInPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #checkInPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="checkOutDate" class="font-bold">Check Out</label>
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              [matDatepicker]="checkOutPicker"
+              formControlName="checkOutDate"
+              [matDatepickerFilter]="checkOutFilter"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="checkInPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #checkOutPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </form>
+
+      <div class="flex gap-4">
+        <button
+          class="border border-black-600 text-black-600 rounded mt-4 cursor-pointer hover:bg-gray-600 hover:text-white transition-all duration-700 hover:shadow-2xl text-sm px-4 py-1"
+          (click)="onCancel()"
+        >
+          Cancel
+        </button>
+        <button
+          class="border border-blue-600 text-blue-600 rounded mt-4 cursor-pointer hover:bg-blue-600 hover:text-white transition-all duration-700 hover:shadow-2xl text-sm px-4 py-1"
+          type="submit"
+          (click)="onSubmit()"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+}

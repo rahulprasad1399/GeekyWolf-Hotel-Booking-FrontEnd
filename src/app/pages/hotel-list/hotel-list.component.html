@@ -9,15 +9,14 @@
       <h2 class="text-xl font-bold">{{destination()}} {{destination() ? ':' : ''}} {{hotelList().length}} hotels found</h2>
       <div class="flex items-center gap-2">
         <p>Sort by:</p>
-        <select name="" id="" class="p-2">
-          <option value="">Price (low to high)</option>
-          <option value="">Guest Rating</option>
+        <select name="sortBy" id="" class="p-2" (change)="onSortChange($event)">
+          <option value="price">Price (low to high)</option>
+          <option value="rating">Guest Rating</option>
         </select>
       </div>
     </div>
 
     <div class="overflow-y-scroll h-full no-scrollbar p-10">
-      <!-- CARD -->
       <div class="flex flex-col gap-6">
         @for (hotel of hotelList(); track hotel.id) {
         <div class="flex shadow-sm hover:shadow-md">
